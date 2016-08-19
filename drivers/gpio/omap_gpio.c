@@ -33,7 +33,7 @@ DECLARE_GLOBAL_DATA_PTR;
 
 #ifdef CONFIG_DM_GPIO
 
-#define GPIO_PER_BANK			32
+#define GPIO_PER_BANK		32
 
 struct gpio_bank {
 	/* TODO(sjg@chromium.org): Can we use a struct here? */
@@ -65,7 +65,7 @@ static void _set_gpio_direction(const struct gpio_bank *bank, int gpio,
 		l |= 1 << gpio;
 	else
 		l &= ~(1 << gpio);
-	__raw_writel(l, reg);
+	__raw_writel(l, reg);
 }
 
 /**

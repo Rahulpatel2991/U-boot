@@ -15,6 +15,11 @@
 
 DECLARE_GLOBAL_DATA_PTR;
 
+#define GPIO_OE  0x134
+#define BASE 0x4804c000
+#define GPIO 48
+#define GPIO_SETDATAOUT 0x13c 
+
 /*
  * Board-specific Platform code can reimplement show_boot_progress () if needed
  */
@@ -53,6 +58,11 @@ void main_loop(void)
 
 	cli_init();
 
+
+//------------------------------------------------------------------------------------------------------------------------------------------
+	printf("GPIO OE %X\n",*((unsigned int *) 0x4804C134));
+	*((unsigned int *) 0x4804C134) = 0xFFFEFFFF;
+	*((unsigned int *) 0x4804C13C) = 0x00010000;
 	run_preboot_environment_command();
 
 #if defined(CONFIG_UPDATE_TFTP)
